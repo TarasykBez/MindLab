@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Підтвердження</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="body_verification">
+<div class="container_verification">
+    <img class="logo_log" src="img/logo.png" alt="Фонова картинка" />
+    <form>
+        <div id="wrapper">
+            <label class="label_verification">Введіть код, що надійшов на пошту</label>
+            <input id="verificationCode" placeholder="Код" type="text" />
+        </div>
+        <button id="submitBtn" type="button">Підтвердити</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("submitBtn").addEventListener("click", function() {
+        window.location.href = "reg.html";
+    });
+</script>
+
+</body>
+</html>

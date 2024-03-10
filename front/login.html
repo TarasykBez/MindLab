@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Реєстрація/Вхід</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Реєстрація/Вхід</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-  <body>
-    <div class="container">
-    <img class="logo_log" src="img/logo.png" alt="Описание картинки" />
-    <form>
-      <input checked="" id="signin" name="action" type="radio" value="signin" />
-      <label for="signin">Увійдіть</label>
-      <input id="signup" name="action" type="radio" value="signup" />
-      <label for="signup">Реєстрація</label>
-      <input id="reset" name="action" type="radio" value="reset" />
-      <label for="reset">Новий пароль</label>
-      <div id="wrapper">
-        <div id="arrow"></div>
-        <input id="email" placeholder="Пошта" type="text" />
-        <input id="pass" placeholder="Пароль" type="password" />
-        <input id="repass" placeholder="Повтор паролю" type="password" />
-      </div>
-      
-      <button type="submit">
+<body class="body_login">
+<div id="successMessage" class="message hide">Вітаємо! Ви успішно увійшли на сайт.</div>
+<div class="container">
+  <img class="logo_log" src="img/logo.png" alt="Фонова картинка" />
+  <form>
+    <input checked="" id="signin" name="action" type="radio" value="signin" />
+    <label class="label_login" for="signin">Увійдіть</label>
+    <input id="signup" name="action" type="radio" value="signup" />
+    <label class="label_login" for="signup">Реєстрація</label>
+    <input id="reset" name="action" type="radio" value="reset" />
+    <label class="label_login" for="reset">Новий пароль</label>
+    <div id="wrapper">
+      <div id="arrow"></div>
+      <input id="email" placeholder="Пошта" type="text" />
+      <input id="pass" placeholder="Пароль" type="password" />
+      <input id="repass" placeholder="Повтор паролю" type="password" />
+    </div>
+
+    <button type="button" id="submitBtn">
         <span>
           Скинути пароль
           <br />
@@ -31,11 +32,27 @@
           <br />
           Зареєструватися
         </span>
-      </button>
-      <div id="google-btn" class="hide">
-        <button type="button">Увійти через Google</button>
-      </div>
-    </form>
-    </div>>
-  </body>
+    </button>
+    <div id="google-btn" class="hide">
+      <button type="button">Увійти через Google</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("submitBtn").addEventListener("click", function() {
+    var selectedAction = document.querySelector('input[name="action"]:checked').value;
+    if (selectedAction === "signin") {
+      document.getElementById("successMessage").classList.remove("hide");
+      setTimeout(function() {
+        document.getElementById("successMessage").classList.add("hide");
+        window.location.href = "account.html";
+      }, 3000); // Час показу повідомлення у мілісекундах (3 секунди)
+    } else if (selectedAction === "signup" || selectedAction === "reset") {
+      window.location.href = "verification.html";
+    }
+  });
+</script>
+
+</body>
 </html>
