@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATICFILES_DIRS = [
+    BASE_DIR.parent / 'static',
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'mysite' / 'templates'],
+        'DIRS': [BASE_DIR / 'mysite' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -101,10 +104,22 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # або 465 для SSL
+EMAIL_USE_TLS = True  # або EMAIL_USE_SSL = True для SSL
+EMAIL_HOST_USER = 'speedfaiertaras@gmail.com'
+EMAIL_HOST_PASSWORD = 'exgt xoab geri dynh'
+
+DEFAULT_FROM_EMAIL = 'mindlab@example.com'
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+# Доменне ім'я для використання в email-верифікації
+DOMAIN_NAME = 'mindlab.com'  # замініть на доменне ім'я вашого сайту
+
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -120,7 +135,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'account'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

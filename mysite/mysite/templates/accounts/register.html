@@ -11,8 +11,10 @@
 <body class="body_login">
 <div id="successMessage" class="message hide">Вітаємо! Ви успішно увійшли на сайт.</div>
 <div class="container">
-  <img class="logo_log" src="../../../../static/img/logo.png" alt="Фонова картинка" />
-  <form>
+  <img class="logo_log" src="{% static 'img/logo.png' %}" alt="Фонова картинка" />
+
+  <form method="post">
+    {% csrf_token %}
     <input checked="" id="signin" name="action" type="radio" value="signin" />
     <label class="label_login" for="signin">Увійдіть</label>
     <input id="signup" name="action" type="radio" value="signup" />
@@ -20,32 +22,27 @@
     <input id="reset" name="action" type="radio" value="reset" />
     <label class="label_login" for="reset">Новий пароль</label>
 
-
-   <form method="post">
-  {% csrf_token %}
-  {% if form %}
-     <div id="wrapper">
-      <div id="arrow"></div>
-    {{ form.as_p }}
-     </div>
-  {% endif %}
-  <button type="submit" id="submitBtn">
-    <span>
-      Скинути пароль
-      <br />
-      Увійти
-      <br />
-      Зареєструватися
-    </span>
-  </button>
-</form>
-
-    <div id="google-btn" class="hide">
-      <button type="button">Увійти через Google</button>
-    </div>
+    {% if form %}
+      <div id="wrapper">
+        <div id="arrow"></div>
+        {{ form.as_p }}
+      </div>
+    {% endif %}
+    <button type="submit" id="submitBtn">
+      <span>
+        Скинути пароль
+        <br />
+        Увійти
+        <br />
+        Зареєструватися
+      </span>
+    </button>
   </form>
-</div>
 
+  <div id="google-btn" class="hide">
+    <button type="button">Увійти через Google</button>
+  </div>
+</div>
 <script>
   document.getElementById("submitBtn").addEventListener("click", function() {
     var selectedAction = document.querySelector('input[name="action"]:checked').value;
@@ -53,14 +50,35 @@
       document.getElementById("successMessage").classList.remove("hide");
       setTimeout(function() {
         document.getElementById("successMessage").classList.add("hide");
-        window.location.href = "account.html";
+        window.location.href = 'account.html';
       }, 3000);
     } else if (selectedAction === "signup" || selectedAction === "reset") {
-      window.location.href = "verification.html";
+
     }
   });
+  document.addEventListener('DOMContentLoaded', function () {
+  function adjustFormFields(action) {
+    var emailField = document.getElementById('email');
+    var password1Field = document.getElementById('pass');
+    var password2Field = document.getElementById('repass');
+
+    // Перевіряємо яка вкладка обрана і показуємо/ховаємо поля
+    emailField.style.display = 'block'; // Пошта завжди видима
+    password1Field.style.display = action === 'reset' ? 'none' : 'block'; // Пароль для Увійдіть/Реєстрація
+    password2Field.style.display = action === 'signup' ? 'block' : 'none'; // Повтор паролю тільки для Реєстрація
+  }
+
+  // Призначаємо обробник події для радіокнопок
+  document.querySelectorAll('input[name="action"]').forEach(function (radio) {
+    radio.addEventListener('change', function (event) {
+      adjustFormFields(event.target.value);
+    });
+  });
+
+  // Ініціалізація стану форми
+  adjustFormFields(document.querySelector('input[name="action"]:checked').value);
+});
+
 </script>
-
-
 </body>
 </html>

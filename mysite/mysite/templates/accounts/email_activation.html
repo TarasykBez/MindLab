@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Активація акаунту</title>
+</head>
+<body>
+    <h1>Вітаємо, {{ user.username }}!</h1>
+    <p>Дякуємо за реєстрацію. Будь ласка, активуйте свій акаунт, натиснувши на посилання нижче:</p>
+    <a href="http://{{ domain }}/accounts/activate/{{ uid }}/{{ token }}">Активувати акаунт</a>
+</body>
+</html>
