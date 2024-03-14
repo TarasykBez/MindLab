@@ -1,19 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>register</title>
-</head>
-<body>
-{% extends "base.html" %}
+{% load static %}
 
-{% block content %}
-<h2>Register</h2>
-<form method="post">
-    {% csrf_token %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Реєстрація/Вхід</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body class="body_login">
+<div id="successMessage" class="message hide">Вітаємо! Ви успішно увійшли на сайт.</div>
+<div class="container">
+  <img class="logo_log" src="../../../../static/img/logo.png" alt="Фонова картинка" />
+  <form>
+    <input checked="" id="signin" name="action" type="radio" value="signin" />
+    <label class="label_login" for="signin">Увійдіть</label>
+    <input id="signup" name="action" type="radio" value="signup" />
+    <label class="label_login" for="signup">Реєстрація</label>
+    <input id="reset" name="action" type="radio" value="reset" />
+    <label class="label_login" for="reset">Новий пароль</label>
+
+
+   <form method="post">
+  {% csrf_token %}
+  {% if form %}
+     <div id="wrapper">
+      <div id="arrow"></div>
     {{ form.as_p }}
-    <button type="submit">Register</button>
+     </div>
+  {% endif %}
+  <button type="submit" id="submitBtn">
+    <span>
+      Скинути пароль
+      <br />
+      Увійти
+      <br />
+      Зареєструватися
+    </span>
+  </button>
 </form>
-{% endblock %}
+
+    <div id="google-btn" class="hide">
+      <button type="button">Увійти через Google</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("submitBtn").addEventListener("click", function() {
+    var selectedAction = document.querySelector('input[name="action"]:checked').value;
+    if (selectedAction === "signin") {
+      document.getElementById("successMessage").classList.remove("hide");
+      setTimeout(function() {
+        document.getElementById("successMessage").classList.add("hide");
+        window.location.href = "account.html";
+      }, 3000);
+    } else if (selectedAction === "signup" || selectedAction === "reset") {
+      window.location.href = "verification.html";
+    }
+  });
+</script>
+
+
 </body>
 </html>
