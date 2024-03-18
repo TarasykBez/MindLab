@@ -29,9 +29,10 @@ html, body {
 
 form {
   width: 600px;
+  height: auto;
   max-width: 80%;
   margin: 20px auto;
-  background: rgba(0, 0, 0, 0.529);
+  background: rgba(173, 168, 168, 0.53);
   padding: 20px;
   border-radius: 10px;
 }
@@ -41,16 +42,16 @@ form {
 
 #wrapper { overflow: hidden; }
 
-#signin:checked ~ #wrapper { height: 178px; }
-#signin:checked ~ #wrapper #arrow { left: 32px; }
+#signin:checked ~ #wrapper { height: 245px; }
+#signin:checked ~ #wrapper #arrow { left: 82px; }
 #signin:checked ~ button span { transform: translate3d(0,-72px,0); }
 
-#signup:checked ~ #wrapper { height: 262px; }
+#signup:checked ~ #wrapper { height: 350px; }
 #signup:checked ~ #wrapper #arrow { left: 290px; }
 #signup:checked ~ button span { transform: translate3d(0,-144px,0); }
 
-#reset:checked ~ #wrapper { height: 94px; }
-#reset:checked ~ #wrapper #arrow { left: 550px; }
+#reset:checked ~ #wrapper { height: 145px; }
+#reset:checked ~ #wrapper #arrow { left: 500px; }
 #reset:checked ~ button span { transform: translate3d(0,0,0); }
 
 /*Надписи*/
@@ -76,7 +77,7 @@ label[for="signin"] { margin-right: 20px; }
 label[for="reset"] { float: right; }
 input[type=radio]:checked + label { opacity: 1; }
 input[type=text],
-input[type=password] {
+input[type=password],[type=email] {
   background: #fff;
   border: none;
   border-radius: 8px;
@@ -111,7 +112,7 @@ button {
   font-weight: 300;
   height: 75px;
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: -40px;
   overflow: hidden;
   transition: all .3s cubic-bezier(.6,0,.4,1);
 }

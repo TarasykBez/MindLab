@@ -25,7 +25,16 @@
     {% if form %}
       <div id="wrapper">
         <div id="arrow"></div>
-        {{ form.as_p }}
+
+          <p>
+            <input type="email" name="email" id="email" placeholder="Пошта" class="{{ form.email.field.widget.attrs.class }}" />
+          </p>
+          <p>
+            <input type="password" name="password1" id="pass" placeholder="Пароль" class="{{ form.password1.field.widget.attrs.class }}" />
+          </p>
+        <p>
+            <input type="password" name="password2" id="repass" placeholder="Повтор паролю" class="{{ form.password2.field.widget.attrs.class }}" />
+        </p>
       </div>
     {% endif %}
     <button type="submit" id="submitBtn">

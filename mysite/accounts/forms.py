@@ -14,17 +14,18 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2']
 
+
 class AdditionalInfoForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'patronymic', 'age', 'phone_number', 'country', 'visit_reason']
+        fields = ['first_name', 'last_name', 'patronymic', 'gender', 'age', 'phone_number', 'country', 'visit_reason']
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder': 'Ім\'я'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Прізвище'}),
             'patronymic': forms.TextInput(attrs={'placeholder': 'По батькові'}),
-            'gender': forms.TextInput(attrs={'placeholder': 'Стать'}),
+            'gender': forms.Select(choices=[('male', 'Чоловік'), ('female', 'Жінка')], attrs={'placeholder': 'Стать'}),
             'age': forms.NumberInput(attrs={'placeholder': 'Вік'}),
             'phone_number': forms.TextInput(attrs={'placeholder': 'Номер телефону'}),
-            'country': forms.Select(attrs={'placeholder': 'Країна'}),
+            'country': forms.Select(choices=[('UK', 'UK'), ('USA', 'USA'), ('UA', 'UA')], attrs={'placeholder': 'Країна'}),
             'visit_reason': forms.Textarea(attrs={'placeholder': 'Причина візиту сайту'}),
         }
