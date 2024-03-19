@@ -32,7 +32,7 @@ form {
   height: auto;
   max-width: 80%;
   margin: 20px auto;
-  background: rgba(173, 168, 168, 0.53);
+  background: rgba(52, 48, 48, 0.53);
   padding: 20px;
   border-radius: 10px;
 }
@@ -233,3 +233,24 @@ button:hover {
   text-align: center;
 }
 
+#error-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 640px;
+  z-index: 1000; /* Переконуємося, що помилки з'являються над іншими елементами */
+
+}
+
+.errors {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 4px;
+  background-color: rgba(52, 48, 48, 0.53);
+  color: #da0d0d;
+  padding: 8px;
+  margin-top: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Змініть позиціювання та ширину, якщо потрібно */
+}
