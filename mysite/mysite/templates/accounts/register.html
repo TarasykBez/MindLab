@@ -6,6 +6,7 @@
   <meta charset="UTF-8" />
   <title>Реєстрація/Вхід</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body class="body_login">
@@ -31,14 +32,20 @@
             <input type="email" name="email" id="email" placeholder="Пошта" class="{{ form.email.field.widget.attrs.class }}" />
           </p>
           <p>
-            <input type="password" name="password1" id="pass" placeholder="Пароль" class="{{ form.password1.field.widget.attrs.class }}" />
+            <div class="password-container">
+              <input type="password" name="password1" id="pass" placeholder="Пароль" class="{{ form.password1.field.widget.attrs.class }}" />
+              <i class="fas fa-eye button_pass" data-toggle="pass"></i>
+            </div>
           </p>
         <p>
+          <div class="password-container">
             <input type="password" name="password2" id="repass" placeholder="Повтор паролю" class="{{ form.password2.field.widget.attrs.class }}" />
+            <i class="fas fa-eye button_pass" data-toggle="repass"></i>
+          </div>
         </p>
       </div>
     {% endif %}
-    <button type="submit" id="submitBtn">
+    <button class="button_llr" type="submit" id="submitBtn">
       <span>
         Скинути пароль
         <br />
@@ -64,33 +71,68 @@
     {% endif %}
   </div>
 
-  <div id="google-btn" class="hide">
-    <button type="button">Увійти через Google</button>
-  </div>
+
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    function adjustFormFields(action) {
-      var emailField = document.getElementById('email');
-      var password1Field = document.getElementById('pass');
-      var password2Field = document.getElementById('repass');
-      var formActionField = document.getElementById('formAction');
+  function adjustFormFields(action) {
+    var emailField = document.getElementById('email');
+    var password1Field = document.getElementById('pass');
+    var password1Container = document.querySelector('[data-toggle="pass"]').parentNode; // Контейнер для першого поля пароля
+    var password2Field = document.getElementById('repass');
+    var password2Container = document.querySelector('[data-toggle="repass"]').parentNode; // Контейнер для другого поля пароля
+    var formActionField = document.getElementById('formAction');
 
-      emailField.style.display = 'block';
-      password1Field.style.display = action === 'reset' ? 'none' : 'block';
-      password2Field.style.display = action === 'signup' ? 'block' : 'none';
-      formActionField.value = action;
+    // Завжди показуємо поле email
+    emailField.style.display = 'block';
+
+    // Налаштування відображення для поля пароля 1 і його іконки
+    if (action === 'reset') {
+      password1Field.style.display = 'none';
+      password1Container.style.display = 'none'; // Приховуємо контейнер поля пароля 1
+    } else {
+      password1Field.style.display = 'block';
+      password1Container.style.display = 'flex'; // Показуємо контейнер поля пароля 1
     }
 
+    // Налаштування відображення для поля пароля 2 і його іконки
+    if (action === 'signup') {
+      password2Field.style.display = 'block';
+      password2Container.style.display = 'flex'; // Показуємо контейнер поля пароля 2
+    } else {
+      password2Field.style.display = 'none';
+      password2Container.style.display = 'none'; // Приховуємо контейнер поля пароля 2
+    }
 
-    document.querySelectorAll('input[name="action"]').forEach(function (radio) {
-      radio.addEventListener('change', function (event) {
-        adjustFormFields(event.target.value);
+    formActionField.value = action;
+  }
+
+  document.querySelectorAll('input[name="action"]').forEach(function (radio) {
+    radio.addEventListener('change', function (event) {
+      adjustFormFields(event.target.value);
+    });
+  });
+
+  adjustFormFields(document.querySelector('input[name="action"]:checked').value);
+});
+    document.addEventListener('DOMContentLoaded', function () {
+      const togglePasswordButtons = document.querySelectorAll('.button_pass');
+
+      togglePasswordButtons.forEach(function(btn) {
+      btn.addEventListener('click', function () {
+        // Визначаємо, яке поле вводу ми маємо змінити
+        var fieldId = this.getAttribute('data-toggle');
+        var passwordField = document.getElementById(fieldId);
+
+        // Перевіряємо тип поля і змінюємо його
+        var type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+        // Змінюємо іконку відповідно до стану
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
       });
     });
-
-
-    adjustFormFields(document.querySelector('input[name="action"]:checked').value);
   });
 </script>
 </body>

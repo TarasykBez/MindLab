@@ -72,7 +72,7 @@ form {
   transition: all .3s cubic-bezier(.6,0,.4,1);
   opacity: 1;
 }
-input[type=radio] { display: none; } /*Прибрали кружечок вибору */
+input[type=radio] { display: none; }
 label[for="signin"] { margin-right: 20px; }
 label[for="reset"] { float: right; }
 input[type=radio]:checked + label { opacity: 1; }
@@ -90,6 +90,23 @@ input[type=password],[type=email] {
   text-indent: 20px;
   transition: all .2s ease-in-out;
 }
+/*кнопка показу пароля*/
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 30px; /* Розмір іконки, щоб забезпечити вільний простір справа */
+}
+
+.button_pass {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
 
 /*Підказки до полів*/
 #email::placeholder, #pass::placeholder, #repass::placeholder {
@@ -100,7 +117,8 @@ input[type=password],[type=email] {
 }
 
 /*Кнопки*/
-button {
+/*кнопка для увійти, реєстрації та скидання пароля*/
+.button_llr {
   background: #141514;
   border: none;
   border-radius: 8px;
@@ -116,14 +134,14 @@ button {
   overflow: hidden;
   transition: all .3s cubic-bezier(.6,0,.4,1);
 }
-button span {
+.button_llr span {
   display: block;
   line-height: 72px;
   position: relative;
   top: -2px;
   transform: translate3d(0,0,0);
 }
-button:hover {
+.button_llr:hover {
   background: #000000;
 }
 
