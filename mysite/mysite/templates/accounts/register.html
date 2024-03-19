@@ -15,6 +15,7 @@
 
   <form method="post">
     {% csrf_token %}
+    <input type="hidden" name="form_action" id="formAction" value="signin" />
     <input checked="" id="signin" name="action" type="radio" value="signin" />
     <label class="label_login" for="signin">Увійдіть</label>
     <input id="signup" name="action" type="radio" value="signup" />
@@ -49,62 +50,47 @@
   </form>
 
   <div id="error-container">
-  {% if form.non_field_errors %}
-    <div class="errors global-errors">{{ form.non_field_errors }}</div>
-  {% endif %}
-  {% if form.email.errors %}
-    <div class="errors">{{ form.email.errors }}</div>
-  {% endif %}
-  {% if form.password1.errors %}
-    <div class="errors">{{ form.password1.errors }}</div>
-  {% endif %}
-  {% if form.password2.errors %}
-    <div class="errors">{{ form.password2.errors }}</div>
-  {% endif %}
-</div>
+    {% if form.non_field_errors %}
+      <div class="errors global-errors">{{ form.non_field_errors }}</div>
+    {% endif %}
+    {% if form.email.errors %}
+      <div class="errors">{{ form.email.errors }}</div>
+    {% endif %}
+    {% if form.password1.errors %}
+      <div class="errors">{{ form.password1.errors }}</div>
+    {% endif %}
+    {% if form.password2.errors %}
+      <div class="errors">{{ form.password2.errors }}</div>
+    {% endif %}
+  </div>
 
   <div id="google-btn" class="hide">
     <button type="button">Увійти через Google</button>
   </div>
 </div>
 <script>
-  document.getElementById("submitBtn").addEventListener("click", function() {
-    var selectedAction = document.querySelector('input[name="action"]:checked').value;
-    if (selectedAction === "signin") {
-      document.getElementById("successMessage").classList.remove("hide");
-      setTimeout(function() {
-        document.getElementById("successMessage").classList.add("hide");
-        window.location.href = 'account.html';
-      }, 3000);
-    } else if (selectedAction === "signup" || selectedAction === "reset") {
-
-    }
-  });
   document.addEventListener('DOMContentLoaded', function () {
-  function adjustFormFields(action) {
-    var emailField = document.getElementById('email');
-    var password1Field = document.getElementById('pass');
-    var password2Field = document.getElementById('repass');
+    function adjustFormFields(action) {
+      var emailField = document.getElementById('email');
+      var password1Field = document.getElementById('pass');
+      var password2Field = document.getElementById('repass');
+      var formActionField = document.getElementById('formAction');
 
-    // Перевіряємо яка вкладка обрана і показуємо/ховаємо поля
-    emailField.style.display = 'block'; // Пошта завжди видима
-    password1Field.style.display = action === 'reset' ? 'none' : 'block'; // Пароль для Увійдіть/Реєстрація
-    password2Field.style.display = action === 'signup' ? 'block' : 'none'; // Повтор паролю тільки для Реєстрація
-  }
+      emailField.style.display = 'block';
+      password1Field.style.display = action === 'reset' ? 'none' : 'block';
+      password2Field.style.display = action === 'signup' ? 'block' : 'none';
+      formActionField.value = action;
+    }
 
-  // Призначаємо обробник події для радіокнопок
-  document.querySelectorAll('input[name="action"]').forEach(function (radio) {
-    radio.addEventListener('change', function (event) {
-      adjustFormFields(event.target.value);
+
+    document.querySelectorAll('input[name="action"]').forEach(function (radio) {
+      radio.addEventListener('change', function (event) {
+        adjustFormFields(event.target.value);
+      });
     });
+
+
+    adjustFormFields(document.querySelector('input[name="action"]:checked').value);
   });
-
-  // Ініціалізація стану форми
-  adjustFormFields(document.querySelector('input[name="action"]:checked').value);
-});
-
 </script>
 </body>
-</html>
-
-// Спроба зміни логіну Git
