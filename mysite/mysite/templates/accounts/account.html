@@ -5,6 +5,16 @@
     <title>Профіль</title>
 </head>
 <body>
-<p>Тут буде відображатися інформація користувача</p>
+    <p>Ім'я: {{ request.user.first_name }}</p>
+    <p>Прізвище: {{ request.user.last_name }}</p>
+    {% if request.user.profile_photo %}
+        <img src="{{ request.user.profile_photo.url }}" alt="Фото профілю">
+    {% endif %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'accounts:account_reset_data' %}">Налаштування</a></li>
+            <li><a href="{% url 'accounts:account_test_results' %}">Пройдені тести</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 
+
 User = get_user_model()
 
 
@@ -28,4 +29,12 @@ class AdditionalInfoForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'placeholder': 'Номер телефону'}),
             'country': forms.Select(choices=[('UK', 'UK'), ('USA', 'USA'), ('UA', 'UA')], attrs={'placeholder': 'Країна'}),
             'visit_reason': forms.Textarea(attrs={'placeholder': 'Причина візиту сайту'}),
+        }
+
+class ProfilePhotoForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['profile_photo']
+        widgets = {
+            'profile_photo': forms.FileInput(attrs={'class': 'form-control'}),
         }

@@ -1,6 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
+
 from . import views
 
 app_name = 'accounts'  # Вказуємо простір імен для вашого додатку
@@ -12,6 +13,8 @@ urlpatterns = (
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('login/', views.AuthView.as_view(), name='login'),
     path('account/', views.account, name='account'),
+    path('account/reset_data/', views.account_reset_data, name='account_reset_data'),
+    path('account/test_results/', views.account_test_results, name='account_test_results'),
     # Вказуємо шляхи для процесу скидання паролю
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_form.html'),
          name='password_reset'),
@@ -26,3 +29,4 @@ urlpatterns = (
          name='password_reset_complete'),
 
 )
+

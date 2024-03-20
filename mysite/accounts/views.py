@@ -16,9 +16,9 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
 
-from .forms import AdditionalInfoForm
 from .forms import UserRegisterForm
 from .tokens import account_activation_token
+from .forms import AdditionalInfoForm, ProfilePhotoForm
 
 User = get_user_model()
 
@@ -120,8 +120,31 @@ def additional_info(request):
 def email_verification_sent(request):
     return render(request, 'accounts/email_verification_sent.html')
 
+
+@login_required
 def account(request):
     return render(request, 'accounts/account.html')
+
+@login_required
+def account_reset_data(request):
+    if request.method == 'POST':
+        info_form = AdditionalInfoForm(request.POST, instance=request.user)
+        photo_form = ProfilePhotoForm(request.POST, request.FILES, instance=request.user)
+
+        if info_form.is_valid() and photo_form.is_valid():
+            info_form.save()
+            photo_form.save()
+            return redirect('accounts:account')  # Переадресація на основну сторінку профілю
+    else:
+        info_form = AdditionalInfoForm(instance=request.user)
+        photo_form = ProfilePhotoForm(instance=request.user)
+
+    return render(request, 'accounts/account_reset_data.html', {'info_form': info_form, 'photo_form': photo_form})
+
+@login_required
+def account_test_results(request):
+    # Заглушка для майбутньої логіки відображення результатів тестів
+    return render(request, 'accounts/account_test_results.html')
 
 def index(request):
 

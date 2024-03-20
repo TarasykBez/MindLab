@@ -38,6 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     visit_reason = models.TextField(blank=True)  # Причина візиту
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
 
     def email_user(self, subject, message, from_email=None, **kwargs):
           send_mail(subject, message, from_email or settings.DEFAULT_FROM_EMAIL, [self.email], **kwargs)
