@@ -1,38 +1,98 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Ласкаво просимо до MindLab</title>
     {% block css %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
-    <header>
-        <h1>My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="/login/">Login</a></li>
-                <li><a href="/register/">Register</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        {% block content %}
-
-        {% endblock %}
-    </main>
-
-    <footer>
-        <p>© 2024 My Website. MindLab.</p>
-    </footer>
-
-    {% block javascript %}
-
-    {% endblock %}
+ <div class="all_page">
+    <div class="first_section">
+      <div class="column_text_1">
+        <div class="all_text_items">
+          <img class="img_logo" src="{% static 'img/logo.png' %}" alt="Лого" />
+          <div class="title_1">Розблокуй свій внутрішній світ</div>
+          <div class="text_1">
+            Відкрийте своє справжнє "я" за допомогою наших найсучасніших
+            психологічних тестів.
+          </div>
+          <button class="button_1" onclick="scrollToEnd()">Почнімо!</button>
+        </div>
+      </div>
+      <div class="column_foto_1">
+        <div class="foto_div_1">
+          <img class="img_main" src="{% static 'img/8.jpg' %}" alt="Розумний котик" />
+        </div>
+      </div>
+    </div>
+    <div class="second_section">
+        <div class="column_foto_1">
+            <div class="foto_div_2">
+                <img class="img_about" src="{% static 'img/about_foto.jpg' %}" alt="Працьовитий котик" />
+            </div>
+        </div>
+        <div class="column_text_1">
+            <div class="all_text_items_2">
+                <div class="title_2">Про наші психологічні тести</div>
+                <div class="text_2">Психологічні тести - це цінні інструменти, які допомагають людям отримати
+                  уявлення про свої думки, емоції та поведінку. Почніть тестування, реєстрація допоможе відслідковувати прогрес</div>
+                <a href="{% url 'accounts:register' %}" class="button_2">Реєстрація</a>
+            </div>
+        </div>
+    </div>
+    <div class="third_section">
+        <div class="container_title">
+          <div class="title_3">Розблокуй свій внутрішній світ</div>
+          <p class="text">
+            Ознайомтеся з широким спектром тестів у різних категоріях.
+        </div>
+        <div class="services_container">
+          <div class="service_item">
+            <h3>Тести на тип особистості</h3>
+            <p class="text">Дізнайтеся більше про свої особистісні риси та особливості.</p>
+          </div>
+          <div class="service_item">
+            <h3>Тести на тип прив'язуваності</h3>
+            <p class="text">Отримайте уявлення про ваші стосунки та сумісність ваших характерів.</p>
+          </div>
+          <div class="service_item">
+            <h3>Тести на профорієнтацію</h3>
+            <p class="text">Дізнайтеся про свої сильні сторони та інтереси для планування кар'єри.</p>
+          </div>
+        </div>
+        <div class="services_container">
+          <div class="service_item">
+            <h3>Тести на стрес та тривожність</h3>
+            <p class="text">Оцініть свій рівень стресу та симптоми тривоги, щоб в подальшому позбутися цього.</p>
+          </div>
+          <div class="service_item">
+            <h3>Тести на емоційний розум</h3>
+            <p class="text">Оцініть і розвивайте свої навички емоційного інтелекту.</p>
+          </div>
+          <div class="service_item">
+            <h3>Тести на когнітивні вміння</h3>
+            <p class="text">.Виміряйте свої когнітивні здібності та навички вирішення проблем.</p>
+          </div>
+      </div>
+        <button class="ball_button" onclick="scrollToRegistration()">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+  </div>
+<script>
+   function scrollToEnd() {
+      var end = document.querySelector('.third_section');
+      end.scrollIntoView({ behavior: 'smooth' });
+    }
+    function scrollToRegistration() {
+      var registrationButton = document.querySelector('.second_section');
+      registrationButton.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
-</html>

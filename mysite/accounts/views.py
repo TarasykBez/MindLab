@@ -112,7 +112,7 @@ def additional_info(request):
         form = AdditionalInfoForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("accounts:account")
+            return redirect('accounts:account')
     else:
         form = AdditionalInfoForm(instance=request.user)
     return render(request, 'accounts/additional_info.html', {'form': form})
@@ -122,5 +122,9 @@ def email_verification_sent(request):
 
 def account(request):
     return render(request, 'accounts/account.html')
+
+def index(request):
+
+    return render(request, 'app/index.html')
 
 

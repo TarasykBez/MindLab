@@ -1,0 +1,328 @@
+/*Шрифт Inter*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+/*-----Сторінка логіна та реєстрації, та їх контейнери-----*/
+html, body {
+  height: 100%;
+  min-height: 100vh;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4747;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+.all_page {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .all_page {
+      max-width: 100%;
+      padding-left: 20px;
+    }
+  }
+  .first_section {
+    gap: 20px;
+    display: flex;
+    background-color: #4d4747;
+    height: 100%;
+  }
+  @media (max-width: 991px) {
+    .first_section {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  .column_text_1 {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 50%;
+  }
+  @media (max-width: 991px) {
+    .column_text_1 {
+      width: 100%;
+    }
+  }
+  .all_text_items {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    font-size: 24px;
+    letter-spacing: -0.96px;
+    margin: auto 0;
+    margin-left: 60px;
+  }
+  @media (max-width: 991px) {
+    .all_text_items {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  .img_logo {
+    display: inline-block;
+    margin-left: 20px;
+    width: 220px;
+    margin-top: -20px;
+    height: auto;
+  }
+  .title_1 {
+    color: #f3f3f3;
+    letter-spacing: -2.88px;
+    margin: 19px 20px 40px 38px;
+    font: 900 50px Inter, sans-serif;
+  }
+  @media (max-width: 991px) {
+    .title_1 {
+      max-width: 100%;
+      font-size: 20px;
+    }
+  }
+  .text_1 {
+    color: #fff;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    margin: 24px 0 0 38px;
+  }
+  @media (max-width: 991px) {
+    .text_1{
+      max-width: 100%;
+    }
+  }
+  .button_1 {
+    width: 200px;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #fff;
+    align-self: start;
+    color: #0d0d0d;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    margin: 64px 0 0 38px;
+    padding: 24px;
+    border: none; /* Видаляє стандартні рамки кнопки */
+    cursor: pointer; /* Змінює курсор на покажчик при наведенні */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Додає плавні переходи для трансформації та зміни кольору */
+  }
+
+  .button_1:hover {
+    background-color: #ebebeb; /* Невелика зміна кольору при наведенні для візуальної зворотнього зв'язку */
+    transform: scale(1.05); /* Збільшує кнопку на 5% при наведенні */
+  }
+
+  @media (max-width: 991px) {
+    .button_1 {
+      white-space: initial;
+      margin: 40px 0 0 10px;
+      padding: 0 20px;
+    }
+  }
+  .column_foto_1 {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 50%;
+    margin-left: 20px;
+  }
+  @media (max-width: 991px) {
+    .column_foto_1{
+      width: 100%;
+    }
+  }
+  .foto_div_1 {
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+  }
+  @media (max-width: 991px) {
+    .foto_div_1 {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  .img_main {
+    aspect-ratio: 0.94;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 991px) {
+    .img_main {
+      max-width: 100%;
+    }
+  }
+  .second_section{
+    gap: 20px;
+    display: flex;
+    height: 100%;
+    background-color: #ebe5e5;
+  }
+  .img_about{
+   margin-left: 80px;
+   width: 500px;
+   height: 400px;
+   border-radius: 50px;
+   object-position: center;
+  }
+  .foto_div_2 {
+    justify-content: center;
+    background-color: #ebe5e5;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+  }
+  .title_2{
+    color: #000000;
+    letter-spacing: -2.88px;
+    margin: 19px 0 0 38px;
+    font: 900 50px Inter, sans-serif;
+  }
+  @media (max-width: 991px) {
+    .title_2 {
+      max-width: 100%;
+      font-size: 20px;
+    }
+  }
+  .text_2 {
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    margin: 24px 0 0 38px;
+  }
+  @media (max-width: 991px) {
+    .text_2{
+      max-width: 100%;
+    }
+  }
+    .button_2 {
+      width: 200px;
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      justify-content: center;
+      border-radius: 10px;
+      background-color: #0d0d0d;
+      align-self: start;
+      color: #fff;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: center;
+      margin: 64px 0 0 38px;
+      padding: 24px;
+      border: none; /* Видаляє стандартні рамки кнопки */
+      cursor: pointer; /* Змінює курсор на покажчик при наведенні */
+      transition: transform 0.3s ease, background-color 0.3s ease; /* Додає плавні переходи для трансформації та зміни кольору */
+    }
+
+    .button_2:hover {
+      background-color: #2a2626; /* Невелика зміна кольору при наведенні для візуальної зворотнього зв'язку */
+      transform: scale(1.05); /* Збільшує кнопку на 5% при наведенні */
+    }
+
+    @media (max-width: 991px) {
+      .button_1 {
+        white-space: initial;
+        margin: 40px 0 0 10px;
+        padding: 0 20px;
+      }
+    }
+    .all_text_items_2 {
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      font-size: 24px;
+      letter-spacing: -0.96px;
+      margin: auto 0;
+      margin-left: 30px;
+      margin-right: 60px;
+    }
+    .third_section{
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Центрує контент по вертикалі */
+      align-items: center;
+      padding: 20px;
+      background-color: #ebe5e5;
+    }
+    .container_title {
+      display: flex;
+      flex-direction: column; /* Організує елементи вертикально */
+      justify-content: center; /* Центрує контент по вертикалі */
+      align-items: center; /* Центрує контент по горизонталі */
+      width: 100%; /* Задає ширину контейнера, щоб він розтягувався на весь доступний простір */
+      text-align: center; /* Центрує текст всередині кожного елемента */
+    }
+    .services_container {
+      display: flex;
+      justify-content: space-around;
+      width: 80%;
+      margin-top: 40px;
+    }
+    .service_item {
+      width: 20%; /* Контролює ширину кожного контейнера послуг */
+      background: #ffffff00;
+      padding: 20px;
+      margin: 0 10px; /* Додає невеликий зазор між контейнерами */
+    }
+
+    .service_item h3 {
+      color: #000;
+      font: 900 24px Inter, sans-serif;
+    }
+
+    @media (max-width: 991px) {
+      .services_container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service_item {
+        width: 80%; /* Збільшує ширину контейнерів на мобільних пристроях */
+        margin-bottom: 10px; /* Додає відступ знизу для мобільних пристроїв */
+      }
+    }
+    .title_3{
+      color: #000000;
+      letter-spacing: -2.88px;
+      font: 900 50px Inter, sans-serif;
+    }
+    .text{
+      color: #666;
+      margin-right: 30px;
+      font: 600 16px Inter, sans-serif;
+    }
+    .ball_button {
+      margin-top: 40px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border: none;
+      background-color: #000000;
+      color: white;
+    }
+    .ball_button i {
+      font-size: 25px;
+      color: #ebe5e5;
+    }
