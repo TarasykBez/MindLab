@@ -4,7 +4,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'accounts'  # Вказуємо простір імен для вашого додатку
+app_name = 'accounts'
 
 urlpatterns = (
     path('register/', views.register, name='register'),
@@ -12,6 +12,7 @@ urlpatterns = (
     path('email_verification_sent/', views.email_verification_sent, name='email_verification_sent'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('login/', views.AuthView.as_view(), name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('account/', views.account, name='account'),
     path('account/reset_data/', views.account_reset_data, name='account_reset_data'),
     path('account/test_results/', views.account_test_results, name='account_test_results'),

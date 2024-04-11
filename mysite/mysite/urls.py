@@ -16,6 +16,6 @@ urlpatterns = [
     path('', index, name='index'),
 ]
 
-# Додайте ці рядки для обслуговування медіафайлів у режимі розробки
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView
@@ -7,7 +8,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -16,9 +18,9 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
 
+from .forms import AdditionalInfoForm, ProfilePhotoForm
 from .forms import UserRegisterForm
 from .tokens import account_activation_token
-from .forms import AdditionalInfoForm, ProfilePhotoForm
 
 User = get_user_model()
 
@@ -146,8 +148,11 @@ def account_test_results(request):
     # Заглушка для майбутньої логіки відображення результатів тестів
     return render(request, 'accounts/account_test_results.html')
 
-def index(request):
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:register')
 
+def index(request):
     return render(request, 'app/index.html')
 
 
