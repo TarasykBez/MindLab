@@ -1,5 +1,3 @@
-# mysite/urls.py
-
 from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path, include
@@ -13,6 +11,7 @@ def index(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('tests/', include(('tests.urls', 'tests'), namespace='tests')),
     path('', index, name='index'),
 ]
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ test.name }}</title>
+</head>
+<body>
+    <h1>{{ test.name }}</h1>
+    <p>{{ test.description }}</p>
+    <form action="{% url 'tests:submit_answers' test.id %}" method="post">
+    {% csrf_token %}
+    {% for question in questions %}
+    <div>
+        <p>{{ question.text }}</p>
+        {% for answer in question.answers.all %}
+        <label>
+            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
+            {{ answer.text }}
+        </label>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit">Відправити відповіді</button>
+</form>
+<a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
+</body>
+</html>

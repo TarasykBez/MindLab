@@ -17,6 +17,7 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
+from tests.models import TestResult
 
 from .forms import AdditionalInfoForm, ProfilePhotoForm
 from .forms import UserRegisterForm
@@ -156,3 +157,7 @@ def index(request):
     return render(request, 'app/index.html')
 
 
+@login_required
+def test_results_view(request):
+    test_results = TestResult.objects.filter(user=request.user)
+    return render(request, 'accounts/test_results.html', {'test_results': test_results})

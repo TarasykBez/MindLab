@@ -1,8 +1,8 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-
 from . import views
+from .views import test_results_view
 
 app_name = 'accounts'
 
@@ -15,7 +15,7 @@ urlpatterns = (
     path('logout/', views.logout_view, name='logout'),
     path('account/', views.account, name='account'),
     path('account/reset_data/', views.account_reset_data, name='account_reset_data'),
-    path('account/test_results/', views.account_test_results, name='account_test_results'),
+    path('account/test_results/', test_results_view, name='test_results'),
     # Вказуємо шляхи для процесу скидання паролю
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_form.html'),
          name='password_reset'),
@@ -28,6 +28,7 @@ urlpatterns = (
     path('reset/done/',
          auth_views.PasswordResetCompleteView.as_view(template_name='accounts/password_reset_complete.html'),
          name='password_reset_complete'),
+
 
 )
 

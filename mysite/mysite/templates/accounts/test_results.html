@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мої результати тестів</title>
+</head>
+<body>
+    <h1>Мої результати тестів</h1>
+    <ul>
+        {% for result in test_results %}
+            <li>{{ result.test.name }} - Загальний бал: {{ result.total_score }}</li>
+        {% empty %}
+            <li>Ви ще не проходили жодного тесту.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'accounts:account' %}">Назад до профілю</a>
+</body>
+</html>
