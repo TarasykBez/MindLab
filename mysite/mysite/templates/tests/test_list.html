@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список тестів</title>
+</head>
+<body>
+    <h1>Список тестів</h1>
+    <ul>
+        {% for test in tests %}
+            <li><a href="{% url 'tests:test_detail' test.id %}">{{ test.name }}</a></li>
+        {% endfor %}
+    </ul>
+<a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
+</body>
+</html>
