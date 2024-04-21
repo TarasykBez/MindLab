@@ -27,7 +27,7 @@ class AdditionalInfoForm(forms.ModelForm):
             'gender': forms.Select(choices=[('male', 'Чоловік'), ('female', 'Жінка')], attrs={'placeholder': 'Стать'}),
             'age': forms.NumberInput(attrs={'placeholder': 'Вік'}),
             'phone_number': forms.TextInput(attrs={'placeholder': 'Номер телефону'}),
-            'country': forms.Select(choices=[('UK', 'UK'), ('USA', 'USA'), ('UA', 'UA')], attrs={'placeholder': 'Країна'}),
+            'country': forms.Select( choices=[('AU', 'Australia'), ('BR', 'Brazil'), ('CA', 'Canada'), ('CN', 'China'), ('FR', 'France'), ('DE', 'Germany'), ('IN', 'India'), ('IT', 'Italy'), ('JP', 'Japan'), ('ES', 'Spain'), ('UA', 'Ukraine'), ('UK', 'UK'), ('USA', 'USA'), ('ZA', 'South Africa'),('AR', 'Argentina'), ('BE', 'Belgium'), ('CL', 'Chile'), ('DK', 'Denmark'), ('EG', 'Egypt'), ('FI', 'Finland'), ('GR', 'Greece'), ('HU', 'Hungary'), ('IE', 'Ireland'), ('MX', 'Mexico'), ('NL', 'Netherlands'), ('NO', 'Norway'), ('PL', 'Poland'), ('PT', 'Portugal'), ('SE', 'Sweden'),],attrs={'placeholder': 'Країна'}),
             'visit_reason': forms.Textarea(attrs={'placeholder': 'Причина візиту сайту'}),
         }
 

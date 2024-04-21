@@ -10,17 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock %}
 </head>
-<body>
-    <header>
-        <h1>My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/login/">Login</a></li>
-                <li><a href="/logout/">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="body_login">
 
     <main>
         {% block content %}
@@ -28,12 +18,8 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <p>© 2024 My Website. MindLab.</p>
-    </footer>
 
     {% block javascript %}
 
     {% endblock %}
-</body>
 </html>

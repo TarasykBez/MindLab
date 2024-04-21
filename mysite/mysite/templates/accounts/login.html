@@ -2,18 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>Вхід</title>
+<style>
+.button_llr {
+  background: #141514;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 300;
+  height: 75px;
+  width: 100%;
+  padding-bottom: -70px;
+  overflow: hidden;
+  transition: all .3s cubic-bezier(.6,0,.4,1);
+}
+.label_login {
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  opacity: .7;
+  margin: 0 auto; /* центрування по горизонталі */
+  margin-bottom: 30px; /* відстань знизу */
+  text-transform: uppercase;
+  text-align: center; /* центрування тексту всередині блоку */
+  margin-left:180px;
+}
+.label_login:hover {
+  transition: all .3s cubic-bezier(.6,0,.4,1);
+  opacity: 1;
+}
+.cont_button{
+    margin-top: 50px;
+}
+</style>
 </head>
 <body>
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Вхід</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Увійти</button>
-    </form>
+
+   <form method="post" class="login-form">
+    {% csrf_token %}
+       <div>
+           <h2 class="label_login">Вхід</h2>
+       </div>
+    <div>
+        <input type="text" name="username" id="id_username" placeholder="Ім'я користувача">
+    </div>
+    <div>
+        <label for="id_password">.</label>
+        <label for="id_password">.</label>
+        <input type="password" name="password" id="id_password" placeholder="Пароль">
+
+    </div>
+<div class="cont_button"><button type="submit" class="button_llr">Увійти</button></div>
+</form>
+
 {% endblock %}
 
 </body>

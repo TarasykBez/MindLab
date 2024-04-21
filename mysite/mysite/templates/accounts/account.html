@@ -1,22 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Профіль</title>
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <p>Ім'я: {{ request.user.first_name }}</p>
-    <p>Прізвище: {{ request.user.last_name }}</p>
-    {% if request.user.profile_photo %}
-        <img src="{{ request.user.profile_photo.url }}" alt="Фото профілю">
-    {% endif %}
-    <nav>
-        <ul>
-            <li><a href="{% url 'accounts:account_reset_data' %}">Налаштування</a></li>
-            <li><a href="{% url 'tests:test_list' %}">Переглянути всі тести</a></li>
-            <li><a href="{% url 'accounts:test_results' %}">Пройдені тести</a></li>
-            <li><a href="{% url 'accounts:logout' %}">Вийти</a></li>
-        </ul>
-    </nav>
+<div class="main-container">
+    <div class="navigation-card">
+        <a href="{% url 'tests:test_list' %}" class="tab"><i class="fas fa-home"></i></a>
+        <a href="{% url 'accounts:account_reset_data' %}" class="tab"><i class="fas fa-cog"></i></a>
+        <a href="{% url 'accounts:test_results' %}" class="tab"><i class="fas fa-check"></i></a>
+        <a href="{% url 'accounts:logout' %}" class="tab"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+
+    <div class="card">
+      <div class="profile-pic">
+        {% if request.user.profile_photo %}
+            <img src="{{ request.user.profile_photo.url }}" alt="Фото профілю">
+        {% endif %}
+      </div>
+      <div class="bottom">
+        <div class="content">
+            <p>Ваші дані</p>
+          <span class="name">Ім'я: {{ request.user.first_name }}</span>
+          <span class="name">Прізвище: {{ request.user.last_name }}</span>
+            <span class="name">По батькові: {{ request.user.patronymic }}</span>
+            <span class="name">Гендер: {{ request.user.gender }}</span>
+            <span class="name">Вік: {{ request.user.age }}</span>
+            <span class="name">Номер телефону: {{ request.user.phone_number }}</span>
+            <span class="name">Країна: {{ request.user.country }}</span>
+
+        </div>
+        <div class="bottom-bottom">
+          <div class="social-links-container">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 </body>
 </html>

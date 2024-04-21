@@ -1,19 +1,84 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Активація акаунту</title>
+    <title>Заповнення акаунту</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 </head>
 <body>
-    <h2>Привіт!</h2>
-    <p>Дякуємо за реєстрацію на нашому сайті. Будь ласка, заповніть додаткові дані нижче нижче:</p>
     {% block content %}
-<h2>Заповніть додаткову інформацію</h2>
-<form method="post">
+<form method="post" action="{% url 'accounts:additional_info' %}" class="form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Відправити</button>
+    <p class="title">Привіт!</p>
+    <p class="message">Лишилось ще трішки! Заповніть дані.</p>
+    <div class="flex">
+            <input required="" placeholder="Ім'я" type="text" id="first_name" name="first_name" class="input">
+            <input required="" placeholder="Прізвище" type="text" id="last_name" name="last_name" class="input" >
+    </div>
+
+        <input required="" placeholder="По батькові" type="text" id="patronymic" name="patronymic" class="input" >
+
+        <select id="gender" name="gender" class="select2-selection--single select" >
+            <option value="" disabled selected>Виберіть стать...</option>
+            <option value="male">Чоловік</option>
+            <option value="female">Жінка</option>
+        </select>
+
+        <input required="" placeholder="Вік" type="number" id="age" name="age" class="input" >
+
+        <input required="" placeholder="Номер телефону" type="tel" id="phone" name="phone" class="input" >
+
+        <select id="country" name="country" class="select2-selection--single select" >
+            <option value="" disabled selected>Виберіть країну...</option>
+            <option value="UK">UK</option>
+    <option value="AR">Argentina</option>
+    <option value="AU">Australia</option>
+    <option value="BE">Belgium</option>
+    <option value="BR">Brazil</option>
+    <option value="CA">Canada</option>
+    <option value="CL">Chile</option>
+    <option value="CN">China</option>
+    <option value="CO">Colombia</option>
+    <option value="DK">Denmark</option>
+    <option value="EG">Egypt</option>
+    <option value="FI">Finland</option>
+    <option value="FR">France</option>
+    <option value="DE">Germany</option>
+    <option value="GR">Greece</option>
+    <option value="IN">India</option>
+    <option value="ID">Indonesia</option>
+    <option value="IE">Ireland</option>
+    <option value="IT">Italy</option>
+    <option value="JP">Japan</option>
+    <option value="MX">Mexico</option>
+    <option value="NL">Netherlands</option>
+    <option value="NZ">New Zealand</option>
+    <option value="NO">Norway</option>
+    <option value="PE">Peru</option>
+    <option value="PL">Poland</option>
+    <option value="PT">Portugal</option>
+    <option value="RU">Russia</option>
+    <option value="SA">Saudi Arabia</option>
+    <option value="ZA">South Africa</option>
+    <option value="KR">South Korea</option>
+    <option value="ES">Spain</option>
+    <option value="SE">Sweden</option>
+    <option value="CH">Switzerland</option>
+    <option value="TR">Turkey</option>
+    <option value="UA">Ukraine</option>
+    <option value="AE">United Arab Emirates</option>
+    <option value="UK">United Kingdom</option>
+    <option value="USA">United States</option>
+        </select>
+
+        <textarea id="visit_reason" name="visit_reason" rows="4" class="input" placeholder="Причина візиту"></textarea>
+
+    <button type="submit" class="submit">Відправити</button>
+    <p class="signin">З повагою,<br>Команда сайту</p>
 </form>
+
+
 {% endblock %}
-    <p>З повагою,<br>Команда сайту</p>
+
 </body>
 </html>
