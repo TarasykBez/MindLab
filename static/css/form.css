@@ -25,6 +25,7 @@ form {
     border-radius: 20px;
     position: relative;
     width: 100%;
+    transform: scale(0.9); /* Збільшення розміру форми на 20% */
 }
 .input {
     font-family: 'Inter', sans-serif;
@@ -50,22 +51,24 @@ form {
 }
 
 .input:focus, select:focus {
-    border-color: #2a6245;
+    border-color: #4d4747;
 }
 
 .submit {
+    height: 60px;
     border: none;
-    background-color: #2a6245;
+    background-color: #4d4747;
     color: #fff;
     padding: 10px;
-    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .submit:hover {
-    background-color: #1a3828;
+    background-color: #332f2f;
 }
 
 .flex {
@@ -97,7 +100,7 @@ form {
     transform: translate(-100%, -50%);
     width: 15px;
     height: 15px;
-    background-color: #2a6245;
+    background-color: #4d4747;
     border-radius: 50%;
     animation: pulse 1s infinite ease-in-out;
 }
@@ -135,7 +138,7 @@ select:hover {
 }
 
 select:focus {
-    border-color: #2a6245;
+    border-color: #4d4747;
     outline: none;
 }
 .select2-container .select2-selection--single {

@@ -1,16 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Список тестів</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>Список тестів</h1>
+<div class="navigation-card">
+    <a href="{% url 'accounts:account' %}" class="tab"><i class="fas fa-home"></i></a>
+    <a href="{% url 'accounts:account_reset_data' %}" class="tab"><i class="fas fa-cog"></i></a>
+    <a href="{% url 'accounts:test_results' %}" class="tab"><i class="fas fa-check"></i></a>
+    <a href="{% url 'accounts:logout' %}" class="tab"><i class="fas fa-sign-out-alt"></i></a>
+</div>
+<div class="side-panel">
+    <i class="fas fa-bars toggle-button fa-lg"></i>
+    <h3>Оберіть тип тесту</h3>
     <ul>
-        {% for test in tests %}
-            <li><a href="{% url 'tests:test_detail' test.id %}">{{ test.name }}</a></li>
-        {% endfor %}
+        <li><a href="#type1" class="h2">Тести на тип особистості</a></li>
+        <li><a href="#type2" class="h2">Тести на тип прив'язуваності</a></li>
+        <li><a href="#type3" class="h2">Тести на профорієнтацію</a></li>
+        <li><a href="#type4" class="h2">Тести на стрес та тривожність</a></li>
+        <li><a href="#type5" class="h2">Тести на емоційний розум</a></li>
+        <li><a href="#type6" class="h2">Тести на когнітивні вміння</a></li>
     </ul>
-<a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
+</div>
+<div class="content-container">
+    <div class="main-container">
+        <h1>Вітаємо!</h1>
+        <p>Тут ви знайдете різноманітні тести, які допоможуть вам краще зрозуміти ваші емоційні стани, особистісні характеристики та інші психологічні аспекти.</p>
+        <ul class="tests_ul">
+            {% for test in tests %}
+                <li class="tests_li"><a class="h1" href="{% url 'tests:test_detail' test.id %}">{{ test.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.querySelector('.toggle-button');
+        const sidePanel = document.querySelector('.side-panel');
+
+        toggleButton.addEventListener('click', function() {
+            sidePanel.classList.toggle('expanded'); // Перемикає клас 'expanded'
+        });
+    });
+</script>
 </body>
 </html>
