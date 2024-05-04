@@ -10,8 +10,9 @@ def index(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include(('accounts.urls', 'accounts'))),
     path('tests/', include(('tests.urls', 'tests'), namespace='tests')),
+    path('captcha/', include('captcha.urls')),
     path('', index, name='index'),
 ]
 

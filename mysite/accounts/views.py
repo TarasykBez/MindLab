@@ -8,8 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from django.shortcuts import redirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -19,7 +18,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
 from tests.models import TestResult
 
-from .forms import AdditionalInfoForm, ProfilePhotoForm
+from .forms import AdditionalInfoForm, ProfilePhotoForm, CaptchaTestForm
 from .forms import UserRegisterForm
 from .tokens import account_activation_token
 
@@ -66,7 +65,7 @@ def register(request):
             user = authenticate(request, email=email, password=password)
             if user is not None and user.is_active:
                 login(request, user)
-                return redirect('accounts:account')
+                return redirect('accounts:show_captcha')
             else:
                 form = UserRegisterForm()  # Reinitialize form for rendering
 
@@ -161,3 +160,28 @@ def index(request):
 def test_results_view(request):
     test_results = TestResult.objects.filter(user=request.user)
     return render(request, 'accounts/test_results.html', {'test_results': test_results})
+
+def show_captcha(request):
+    # Ініціалізуємо спроби, якщо вони ще не були ініціалізовані
+    if 'captcha_attempts' not in request.session:
+        request.session['captcha_attempts'] = 0
+
+    if request.method == 'POST':
+        form = CaptchaTestForm(request.POST)
+        if form.is_valid():
+            # Якщо капча валідна, видаляємо інформацію про спроби з сесії та перенаправляємо на сторінку account
+            del request.session['captcha_attempts']
+            return redirect('accounts:account')  # Переадресація на сторінку акаунта
+        else:
+            # Збільшуємо кількість спроб на 1
+            request.session['captcha_attempts'] += 1
+            if request.session['captcha_attempts'] >= 5:
+                # Якщо спроби вичерпані, видаляємо інформацію про спроби з сесії та перенаправляємо на сторінку реєстрації
+                del request.session['captcha_attempts']
+                return redirect('accounts:register')  # Переадресація на сторінку реєстрації
+    else:
+        form = CaptchaTestForm()
+
+    # Показуємо форму, якщо це GET запит або якщо валідація не пройшла
+    captcha_attempts = request.session.get('captcha_attempts', 0)
+    return render(request, 'accounts/captcha.html', {'form': form, 'captcha_attempts': captcha_attempts})

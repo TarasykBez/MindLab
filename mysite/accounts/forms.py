@@ -1,7 +1,7 @@
+from captcha.fields import CaptchaField
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-
+from django.contrib.auth.forms import UserCreationForm
 
 User = get_user_model()
 
@@ -38,3 +38,7 @@ class ProfilePhotoForm(forms.ModelForm):
         widgets = {
             'profile_photo': forms.FileInput(attrs={'class': 'form-control'}),
         }
+
+
+class CaptchaTestForm(forms.Form):
+    captcha = CaptchaField()

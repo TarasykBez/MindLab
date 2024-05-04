@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Введіть капчу</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+   <div class="container">
+    <h2>Будь ласка, підтвердіть, що ви не робот</h2>
+    <p>Кількість спроб: {{ captcha_attempts }}</p>
+    <form method="post" action="{% url 'accounts:show_captcha' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Перевірити капчу</button>
+    </form>
+</div>
+
+</body>
+</html>
