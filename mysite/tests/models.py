@@ -39,7 +39,7 @@ class TestResult(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='test_results', on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     total_score = models.IntegerField()
-    completion_time = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return f"{self.user.email}'s score on {self.test.name}: {self.total_score}"
