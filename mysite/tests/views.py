@@ -9,7 +9,11 @@ from .models import Test, TestResult, Question, Answer
 
 
 def test_list(request):
-    tests = Test.objects.all()
+    test_type = request.GET.get('type')  # Отримуємо тип тесту з параметрів запиту
+    if test_type:
+        tests = Test.objects.filter(type=test_type)
+    else:
+        tests = Test.objects.all()
     return render(request, 'tests/test_list.html', {'tests': tests})
 
 def test_detail(request, test_id):

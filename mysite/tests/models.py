@@ -3,11 +3,12 @@ from django.db import models
 
 class Test(models.Model):
     TYPE_CHOICES = (
-        ('a', 'Type A'),
-        ('b', 'Type B'),
-        ('c', 'Type C'),
-        ('d', 'Type D'),
-        ('e', 'Type E'),
+        ('a', 'Тести на тип особистості'),
+        ('b', 'Тести на тип привязуваності'),
+        ('c', 'Тести на профорієнтацію'),
+        ('d', 'Тести на стрес та тривожність'),
+        ('e', 'Тести на емоційний розум'),
+        ('f', 'Тести на когнітивні вміння'),
         ('other', 'Other'),
     )
 
@@ -41,7 +42,7 @@ class TestResult(models.Model):
     completion_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username}'s score on {self.test.name}: {self.total_score}"
+        return f"{self.user.email}'s score on {self.test.name}: {self.total_score}"
 
 class UserTest(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='user_tests', on_delete=models.CASCADE)
@@ -49,4 +50,4 @@ class UserTest(models.Model):
     result = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.user.username}'s result on {self.test.name} is {self.result}"
+        return f"{self.user.email}'s result on {self.test.name} is {self.result}"
