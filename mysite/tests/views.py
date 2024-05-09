@@ -1,9 +1,5 @@
-import os
-
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.checks import messages
-from django.http import FileResponse, HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
@@ -12,14 +8,7 @@ from django.urls import reverse
 from .models import Test, TestResult, Question, Answer
 
 
-def download_file(request, filename):
-    filepath = os.path.join(settings.BASE_DIR, 'files', filename)
-
-    if os.path.exists(filepath):
-        response = FileResponse(open(filepath, 'rb'), as_attachment=True, filename=filename)
-        return response
-    else:
-        return HttpResponse("File not found.", status=404)
+@login_required
 def test_list(request):
     test_type = request.GET.get('type')  # Отримуємо тип тесту з параметрів запиту
     if test_type:
@@ -28,14 +17,18 @@ def test_list(request):
         tests = Test.objects.all()
     return render(request, 'tests/test_list.html', {'tests': tests})
 
+
+@login_required
 def test_detail(request, test_id):
     test = get_object_or_404(Test, pk=test_id)
     questions = Question.objects.filter(test=test)
     return render(request, 'tests/test_detail.html', {'test': test, 'questions': questions})
 
+
+@login_required
 def test_result(request, test_id):
-    test_result = TestResult.objects.filter(test_id=test_id, user=request.user).first()
-    return render(request, 'tests/test_result.html', {'result': test_result})
+    test_result_id = TestResult.objects.filter(test_id=test_id, user=request.user).first()
+    return render(request, 'tests/test_result.html', {'result': test_result_id})
 
 
 @login_required
@@ -63,7 +56,6 @@ def submit_answers(request, test_id):
             defaults={'total_score': total_score}
         )
 
-        # Перенаправлення на сторінку з результатами
         return HttpResponseRedirect(reverse('tests:test_result', args=[result.id]))
     else:
         return HttpResponseRedirect(reverse('tests:test_detail', args=[test_id]))

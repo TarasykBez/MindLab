@@ -5,12 +5,13 @@
     <title>Результати тесту</title>
 </head>
 <body>
-    <h1>Результати тесту для {{ result.test.name }}</h1>
-    <p>Загальний бал: {{ result.total_score }}</p>
+    <h1>Ваші результати збережено, перегляньте їх у своєму профілі</h1>
+
 
     <!-- Кнопка для повернення до списку тестів -->
     <a href="{% url 'tests:test_list' %}"><button>Повернутися до списку тестів</button></a>
     <!-- Кнопка для переходу на сторінку акаунта -->
     <a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
+    <a href="{% url 'accounts:test_results' %}"><button>Результати тестів</button></a>
 </body>
 </html>

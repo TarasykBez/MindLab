@@ -1,3 +1,5 @@
+from datetime import date
+import os
 from django.conf import settings
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth import logout
@@ -7,7 +9,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -16,7 +18,6 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
-from datetime import date
 from tests.models import TestResult
 
 from .forms import AdditionalInfoForm, ProfilePhotoForm, CaptchaTestForm
@@ -194,3 +195,12 @@ def show_captcha(request):
 
     captcha_attempts = request.session.get('captcha_attempts', 0)
     return render(request, 'accounts/captcha.html', {'form': form, 'captcha_attempts': captcha_attempts})
+
+def download_file(request, filename):
+    filepath = os.path.join(settings.BASE_DIR, 'files', filename)
+
+    if os.path.exists(filepath):
+        response = FileResponse(open(filepath, 'rb'), as_attachment=True, filename=filename)
+        return response
+    else:
+        return HttpResponse("File not found.", status=404)

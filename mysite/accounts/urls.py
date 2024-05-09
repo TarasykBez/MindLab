@@ -17,6 +17,7 @@ urlpatterns = (
     path('account/reset_data/', views.account_reset_data, name='account_reset_data'),
     path('account/test_results/', test_results_view, name='test_results'),
     path('captcha/', show_captcha, name='show_captcha'),
+    path('download/<str:filename>/', views.download_file, name='download_file'),
     # Вказуємо шляхи для процесу скидання паролю
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_form.html'),
          name='password_reset'),
