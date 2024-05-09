@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30, blank=True)
     patronymic = models.CharField(max_length=30, blank=True)  # По батькові
     gender = models.CharField(max_length=10, blank=True)  # Стать
-    age = models.IntegerField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=50, blank=True)
     visit_reason = models.TextField(blank=True)  # Причина візиту

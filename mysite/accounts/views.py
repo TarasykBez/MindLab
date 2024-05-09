@@ -16,6 +16,7 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils.http import urlsafe_base64_encode
+from datetime import date
 from tests.models import TestResult
 
 from .forms import AdditionalInfoForm, ProfilePhotoForm, CaptchaTestForm
@@ -23,6 +24,15 @@ from .forms import UserRegisterForm
 from .tokens import account_activation_token
 
 User = get_user_model()
+
+
+def calculate_age(birth_date):
+    today = date.today()
+    if birth_date:
+        return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+    else:
+        return "Дата народження не вказана"
+
 
 class AuthView(LoginView):
     template_name = 'accounts/login.html'
@@ -125,7 +135,8 @@ def email_verification_sent(request):
 
 @login_required
 def account(request):
-    return render(request, 'accounts/account.html')
+    age = calculate_age(request.user.birth_date)
+    return render(request, 'accounts/account.html', {'age': age})
 
 @login_required
 def account_reset_data(request):
@@ -136,7 +147,7 @@ def account_reset_data(request):
         if info_form.is_valid() and photo_form.is_valid():
             info_form.save()
             photo_form.save()
-            return redirect('accounts:account')  # Переадресація на основну сторінку профілю
+            return redirect('accounts:account')
     else:
         info_form = AdditionalInfoForm(instance=request.user)
         photo_form = ProfilePhotoForm(instance=request.user)
@@ -145,7 +156,6 @@ def account_reset_data(request):
 
 @login_required
 def account_test_results(request):
-    # Заглушка для майбутньої логіки відображення результатів тестів
     return render(request, 'accounts/account_test_results.html')
 
 def logout_view(request):
@@ -171,7 +181,7 @@ def show_captcha(request):
         if form.is_valid():
             # Якщо капча валідна, видаляємо інформацію про спроби з сесії та перенаправляємо на сторінку account
             del request.session['captcha_attempts']
-            return redirect('accounts:account')  # Переадресація на сторінку акаунта
+            return redirect('accounts:account')
         else:
             # Збільшуємо кількість спроб на 1
             request.session['captcha_attempts'] += 1
@@ -182,6 +192,5 @@ def show_captcha(request):
     else:
         form = CaptchaTestForm()
 
-    # Показуємо форму, якщо це GET запит або якщо валідація не пройшла
     captcha_attempts = request.session.get('captcha_attempts', 0)
     return render(request, 'accounts/captcha.html', {'form': form, 'captcha_attempts': captcha_attempts})
