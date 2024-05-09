@@ -1,5 +1,9 @@
+import os
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.checks import messages
+from django.http import FileResponse, HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
@@ -8,6 +12,14 @@ from django.urls import reverse
 from .models import Test, TestResult, Question, Answer
 
 
+def download_file(request, filename):
+    filepath = os.path.join(settings.BASE_DIR, 'files', filename)
+
+    if os.path.exists(filepath):
+        response = FileResponse(open(filepath, 'rb'), as_attachment=True, filename=filename)
+        return response
+    else:
+        return HttpResponse("File not found.", status=404)
 def test_list(request):
     test_type = request.GET.get('type')  # Отримуємо тип тесту з параметрів запиту
     if test_type:
