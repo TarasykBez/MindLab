@@ -85,8 +85,11 @@ body {
 }
 
 .main-container {
-  position: relative;
-  padding-top: 80px; /* Відступ зверху, щоб навігаційна панель не перекривала контент */
+  display: grid;
+  margin-left: 350px;
+    margin-top: 100px;
+  grid-template-columns: 1fr 70px; /* Приклад з двома колонками */
+  grid-template-rows: auto;
 }
 
 .card .profile-pic img {
@@ -200,3 +203,13 @@ border: 7px solid #000000;
 box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
 transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
 }
+/* Основні стилі */
+
+
+.map {
+  grid-column: 2 / 3; /* Карта буде в другій колонці */
+  grid-row: 1 / 2; /* У першому рядку */
+  margin-top: 20px;
+}
+
+

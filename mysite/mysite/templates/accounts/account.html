@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+
 <div class="main-container">
     <div class="navigation-card">
         <a href="{% url 'tests:test_list' %}" class="tab"><i class="fas fa-home"></i></a>
@@ -43,8 +44,10 @@
         </div>
       </div>
     </div>
+
 </div>
-<div class="map" id="map" style="height: 200px; width: 100%;"></div>
+<div class="map" id="map" style="height: 200px; width: 300px;"></div>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU-S0MWvTzlRHZe0kRVgb-Uhcefq7NX34&callback=initMap"></script>
 <script>
 function initMap() {
