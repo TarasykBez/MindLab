@@ -44,5 +44,21 @@
       </div>
     </div>
 </div>
+<div class="map" id="map" style="height: 200px; width: 100%;"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU-S0MWvTzlRHZe0kRVgb-Uhcefq7NX34&callback=initMap"></script>
+<script>
+function initMap() {
+    var officeLocation = {lat: 50.293639, lng: 31.461806};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: officeLocation
+    });
+    var marker = new google.maps.Marker({
+        position: officeLocation,
+        map: map,
+        title: 'MindLab'
+    });
+}
+</script>
 </body>
 </html>
