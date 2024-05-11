@@ -1,27 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ test.name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/tests.css' %}" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>{{ test.name }}</h1>
-    <p>{{ test.description }}</p>
-    <form action="{% url 'tests:submit_answers' test.id %}" method="post">
-    {% csrf_token %}
-    {% for question in questions %}
-    <div>
-        <p>{{ question.text }}</p>
-        {% for answer in question.answers.all %}
-        <label>
-            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
-            {{ answer.text }}
-        </label>
-        {% endfor %}
+    <div class="navigation-card">
+        <a href="{% url 'accounts:account' %}" class="tab"><i class="fas fa-home"></i></a>
     </div>
-    {% endfor %}
-    <button type="submit">Відправити відповіді</button>
-</form>
-<a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
+    <div class="content-container">
+        <div class="main-container">
+            <h1 class="h3">{{ test.name }}</h1>
+            <p>{{ test.description }}</p>
+            <form action="{% url 'tests:submit_answers' test.id %}" method="post" class="tests_ul">
+                {% csrf_token %}
+                {% for question in questions %}
+                <div class="tests_li">
+                    <p>{{ question.text }}</p>
+                    {% for answer in question.answers.all %}
+                    <label class="h2">
+                        <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
+                        {{ answer.text }}
+                    </label>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="h1">Відправити відповіді</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

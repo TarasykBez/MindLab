@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #F3F4F6;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+.navigation-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border-radius: 25px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 200px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.main-container {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;
+    width: 90%;
+    max-width: 960px;
+    text-align: center;
+    margin: auto;
+}
+
+h1, p {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.tests_ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
+.tests_li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.fas.fa-bars {
+    margin-top: 20px; /* Відступ зверху для іконки */
+    margin-left: 20px;
+}
+.h2 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 20px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    overflow: hidden;
+    padding: 0 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    width: auto;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.h1{
+    margin-top: 30px;
+    align-items: center;
+    appearance: none;
+    background-color: #050505;
+    border-radius: 20px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #f2f2fa;
+    cursor: pointer;
+    display: flex;
+    font-family: "Inter", sans-serif;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    overflow: hidden;
+    padding: 0 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    width: auto;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: rgb(252, 252, 252);
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    color: black;
+    font-size: 24px;
+}
+
+.tab:hover {
+    background-color: rgb(201, 196, 196);
+}
+h3 {
+    font-family: 'Inter', sans-serif; /* Використовуємо шрифт Inter для заголовку */
+    font-size: 36px; /* Збільшуємо розмір шрифту для більшої видимості */
+    color: #333; /* Темний колір тексту для кращої читабельності */
+    text-align: center; /* Вирівнювання тексту по центру */
+    margin-top: 30px; /* Додаємо верхній відступ */
+    margin-bottom: 20px; /* Додаємо нижній відступ */
+}
