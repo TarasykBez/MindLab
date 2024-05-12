@@ -28,7 +28,7 @@
 
 </div>
 <div class="content-container">
-    <div class="main-container">
+    <div class="main-container1">
         <h1>Вітаємо!</h1>
         <p>Тут ви знайдете різноманітні тести, які допоможуть вам краще зрозуміти ваші емоційні стани, особистісні характеристики та інші психологічні аспекти.</p>
         <ul class="tests_ul">
@@ -36,7 +36,7 @@
     <li class="tests_li">
         <a class="test_link" href="{% url 'tests:test_detail' test.id %}">
             <div class="test_name h1">{{ test.name }}</div>
-            <div class="test_description h1">{{ test.description }}</div>
+            <div class="test_description ">{{ test.description }}</div>
         </a>
     </li>
 {% endfor %}

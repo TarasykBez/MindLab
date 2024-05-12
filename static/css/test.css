@@ -41,8 +41,17 @@ html, body {
   width: 90%;
   max-width: 960px;
   text-align: center;
+     overflow: auto;
 }
-
+.main-container1 {
+     border-radius: 50px;
+ background: #e0e0e0;
+ box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+  width: 90%;
+  max-width: 960px;
+  text-align: center;
+}
 h1, p {
   text-align: center;
   margin: 10px 0;
@@ -114,12 +123,14 @@ li {
 }
 
 .tests_li {
-    display: flex;
+     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: calc(50% - 20px); /* Ширина для двох елементів в рядку */
     padding: 10px;
+    margin: 10px; /* Відступ між блоками */
     box-sizing: border-box;
+
 }
 .h1 {
     width: 90%;
@@ -234,7 +245,11 @@ li {
 }
 
 .test_description {
+    .test_description {
     color: #ccc;
     font-size: smaller;
+    overflow-wrap: break-word; /* Автоматично переносить слова на новий рядок */
+    word-wrap: break-word; /* Застаріла альтернатива overflow-wrap */
+}
 }
 
