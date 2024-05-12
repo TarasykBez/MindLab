@@ -1,17 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Результати тесту</title>
+    <link rel="stylesheet" href="{% static 'css/tests.css' %}" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>Ваші результати збережено, перегляньте їх у своєму профілі</h1>
+<div class="navigation-card">
+  <a href="{% url 'tests:test_list' %}" class="tab"><i class="fas fa-clipboard-list"></i></a>
+    <a href="{% url 'accounts:account' %}" class="tab"><i class="fas fa-home"></i></a>
+    <a href="{% url 'accounts:test_results' %}" class="tab"><i class="fas fa-check"></i></a>
+</div>
+<div class="content-container">
+        <div class="main-container ">
+<h1>Ваші результати збережено, перегляньте їх у своєму профілі</h1>
+
+        </div>
+</div>
 
 
-    <!-- Кнопка для повернення до списку тестів -->
-    <a href="{% url 'tests:test_list' %}"><button>Повернутися до списку тестів</button></a>
-    <!-- Кнопка для переходу на сторінку акаунта -->
-    <a href="{% url 'accounts:account' %}"><button>Мій акаунт</button></a>
-    <a href="{% url 'accounts:test_results' %}"><button>Результати тестів</button></a>
 </body>
 </html>

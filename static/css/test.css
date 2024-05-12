@@ -83,6 +83,7 @@ li {
  white-space: nowrap;
  will-change: box-shadow,transform;
  font-size: 18px;
+
 }
 
 .h1:focus, .h1:hover, .h1:active {
@@ -203,3 +204,24 @@ li {
 .side-panel h3 {
     margin-left: 12px;
 }
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Зменшено розмір вкладки */
+  height: 40px; /* Зменшено розмір вкладки */
+  overflow: hidden;
+  background-color: rgb(252, 252, 252);
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  color: black; /* Змінено колір іконок на чорний */
+  font-size: 24px; /* Збільшено розмір шрифта для іконок */
+}
+
+.tab:hover {
+  background-color: rgb(201, 196, 196);
+}
+
+
