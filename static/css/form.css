@@ -14,7 +14,19 @@ body {
     align-items: center;
     background-color: #999999;
 }
-
+.div_reset_data form{
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 450px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    transform: scale(0.9);
+}
 form {
     display: flex;
     flex-direction: column;
@@ -87,6 +99,7 @@ form {
 }
 
 .title {
+
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -179,9 +192,64 @@ select:focus {
     box-sizing: border-box;  /* Включення padding і border в розрахунок ширини */
 }
 
+.div_reset_data form input {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+     padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+}
 
-
-
-
-
-
+.div_reset_data form select{
+    appearance: none;  /* Видаліть стандартний вигляд селектора */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 35px 10px 10px;  /* Патинг справа більший для іконки */
+    border-radius: 10px;
+    font-size: 16px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2300237A"%3E%3Cpath d="M6 8l4 4 4-4z"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;  /* Позиціонування іконки */
+    background-size: 25px;  /* Розмір іконки */
+    box-sizing: border-box;
+     padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+}
+.div_reset_data form label {
+    display: none;
+}
+.title2 {
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.div_reset_data form textarea {
+    resize: none;
+    width: 426px;
+    border-radius: 10px;
+font-family: 'Inter', sans-serif;
+    color: #333;
+    padding:10px;
+}

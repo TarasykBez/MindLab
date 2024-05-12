@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 </head>
 <body>
+<div class="div_reset_data">
     <form method="POST" enctype="multipart/form-data">
+         <p class="title2">Оновлення даних</p>
+         <p class="message">Змініть дані та оберіть фото</p>
         {% csrf_token %}
         {{ info_form.as_p }}
         {{ photo_form.as_p }}
-        <button type="submit">Зберегти зміни</button>
+        <button type="submit" class="submit">Зберегти зміни</button>
     </form>
+    </div>
 </body>
 </html>
 
