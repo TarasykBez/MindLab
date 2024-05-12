@@ -1,11 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Мої результати тестів</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>Мої результати тестів</h1>
+<div class="navigation-card">
+     <a href="{% url 'accounts:account' %}" class="tab"><i class="fas fa-home"></i></a>
+    <a href="{% url 'accounts:download_file' filename='details.docx' %}" class="tab"><i class="fas fa-download"></i></a>
+</div>
+<div class="content-container">
+    <div class="main-container">
+    <h1 >Перелік результатів</h1>
     <ul>
         {% for result in test_results %}
             <li>{{ result.test.name }} - Загальний бал: {{ result.total_score }}</li>
@@ -13,7 +22,7 @@
             <li>Ви ще не проходили жодного тесту.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'accounts:account' %}">Назад до профілю</a>
-    <a href="{% url 'accounts:download_file' filename='details.docx' %}" ></i> Завантажити файл з описом результатів</a>
+    </div>
+</div>
 </body>
 </html>

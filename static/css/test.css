@@ -5,8 +5,8 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #F3F4F6; /* Темніший відтінок для фону */
-  color: #333; /* Змінено колір тексту на темніший для кращої читабельності */
+  background-color: #F3F4F6;
+  color: #333;
   font-family: 'Inter', sans-serif;
 }
 
@@ -28,8 +28,8 @@ html, body {
 .content-container {
   display: flex;
   justify-content: center;
-  padding-top: 200px; /* Достатній відступ зверху */
-  padding-bottom: 50px; /* Відступ знизу */
+  padding-top: 200px;
+  padding-bottom: 50px;
   width: 100%;
 }
 
@@ -38,20 +38,20 @@ html, body {
  background: #e0e0e0;
  box-shadow: 20px 20px 60px #bebebe,
                -20px -20px 60px #ffffff;
-  width: 90%; /* Ширина контейнера */
-  max-width: 960px; /* Максимальна ширина */
-  text-align: center; /* Вирівнювання тексту по центру */
+  width: 90%;
+  max-width: 960px;
+  text-align: center;
 }
 
 h1, p {
-  text-align: center; /* Вирівнювання заголовку та параграфів по центру */
-  margin: 10px 0; /* Додаємо верхні та нижні відступи для елементів */
+  text-align: center;
+  margin: 10px 0;
 }
 
 li {
-    display: block; /* Робить кожен елемент li блочним */
-    margin-bottom: 10px; /* Додає відступ знизу */
-    padding: 10px; /* Відступ всередині */
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 .h1 {
@@ -86,10 +86,6 @@ li {
 
 }
 
-.h1:focus, .h1:hover, .h1:active {
- /* Стилі для фокусу, наведення та активного стану */
-}
-
 .tab {
   display: flex;
   align-items: center;
@@ -110,65 +106,63 @@ li {
   background-color: rgb(201, 196, 196);
 }
 .tests_ul {
-    display: flex; /* включаємо Flexbox для контейнера */
-    flex-wrap: wrap; /* дозволяє елементам переходити на наступний рядок */
-    padding: 0; /* видаляємо стандартні відступи */
-    margin: 0; /* видаляємо стандартні маржини */
-    list-style-type: none; /* видаляємо маркери списку */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
 
 .tests_li {
-    display: flex; /* забезпечуємо, що li також є flex-контейнером */
-    justify-content: center; /* вирівнюємо контент по центру внутрішнього контейнера */
-    align-items: center; /* вирівнюємо контент по центру по вертикалі */
-    width: 50%; /* задаємо ширину кожного li, щоб два елемента поміщались в одному рядку */
-    padding: 10px; /* додаємо внутрішній відступ */
-    box-sizing: border-box; /* включаємо в розмір елемента його відступи і рамки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 .h1 {
-    width: 90%; /* забезпечуємо, що посилання заповнюють весь доступний простір в li */
+    width: 90%;
 }
 .toggle-button {
-    display: flex; /* Включаємо flexbox для центрування */
-    justify-content: center; /* Горизонтальне центрування */
-    align-items: center; /* Вертикальне центрування */
-    font-size: 2em; /* Збільшення іконки, можна налаштувати за потребою */
-    width: 100%; /* Займає всю ширину контейнера */
-    height: 60px; /* Висота, якщо потрібно */
-    cursor: pointer; /* Рука-курсор для вказівки на інтерактивність */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
 }
 
 .side-panel {
     position: fixed;
     left: 0;
     top: 0;
-    width: 60px; /* Початкова ширина, може бути адаптована */
+    width: 60px;
     height: 100vh;
     background-color: #f0f0f0;
     box-shadow: 4px 0 5px -2px rgba(0,0,0,0.2);
     z-index: 2000;
-    transition: width 0.5s; /* Анімація зміни ширини */
-    display: flex; /* Для центрування іконки всередині */
-    flex-direction: column; /* Елементи у вертикальному порядку */
+    transition: width 0.5s;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Клас для іконки для візуального розрізнення */
 .fas.fa-bars {
-    margin-top: 20px; /* Відступ зверху для іконки */
+    margin-top: 20px;
     margin-left: 20px;
 }
 
-/* Стилі для розширеного стану */
 .side-panel.expanded {
-    width: 200px; /* ширина для розширеного стану */
+    width: 200px;
 }
 
 .side-panel h2, .side-panel ul, .side-panel h3 {
-    display: none; /* сховати контент при колапсі */
+    display: none;
 }
 
 .side-panel.expanded h2, .side-panel.expanded ul, .side-panel.expanded h3 {
-    display: block; /* показати контент у розширеному стані */
+    display: block;
 }
 .h2 {
     align-items: center;
@@ -180,7 +174,7 @@ li {
     box-sizing: border-box;
     color: #36395A;
     cursor: pointer;
-    display: flex; /* Змінено з inline-flex на flex для кращої обробки контенту */
+    display: flex;
     font-family: "JetBrains Mono", monospace;
     height: 60px;
     justify-content: center;
@@ -196,7 +190,7 @@ li {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    white-space: normal; /* Дозволяє тексту переноситись на новий рядок */
+    white-space: normal;
     will-change: box-shadow, transform;
     font-size: 14px;
     margin-left: -38px;
@@ -208,16 +202,16 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Зменшено розмір вкладки */
-  height: 40px; /* Зменшено розмір вкладки */
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   background-color: rgb(252, 252, 252);
   border-radius: 50%;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s;
-  color: black; /* Змінено колір іконок на чорний */
-  font-size: 24px; /* Збільшено розмір шрифта для іконок */
+  color: black;
+  font-size: 24px;
 }
 
 .tab:hover {
@@ -240,7 +234,7 @@ li {
 }
 
 .test_description {
-    color: #ccc; /* світло-сірий колір для опису */
+    color: #ccc;
     font-size: smaller;
 }
 

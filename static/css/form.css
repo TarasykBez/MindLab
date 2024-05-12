@@ -196,6 +196,7 @@ select:focus {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: #333;
+    margin-top: -20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -203,7 +204,6 @@ select:focus {
     width: 100%;
     box-sizing: border-box;
      padding: 10px;
-    margin: 5px 0;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -220,13 +220,13 @@ select:focus {
     padding: 10px 35px 10px 10px;  /* Патинг справа більший для іконки */
     border-radius: 10px;
     font-size: 16px;
+     margin-top: -20px;
     background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2300237A"%3E%3Cpath d="M6 8l4 4 4-4z"/%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: right 10px center;  /* Позиціонування іконки */
     background-size: 25px;  /* Розмір іконки */
     box-sizing: border-box;
      padding: 10px;
-    margin: 5px 0;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -243,13 +243,16 @@ select:focus {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+
+     margin-bottom: -20px;
 }
 .div_reset_data form textarea {
     resize: none;
     width: 426px;
+     margin-top: -20px;
     border-radius: 10px;
 font-family: 'Inter', sans-serif;
+    font-size: 16px;
     color: #333;
     padding:10px;
 }
