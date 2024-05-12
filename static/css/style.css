@@ -18,6 +18,28 @@ html, body {
   height: 100vh;
   width: 100%;
 }
+.h222{
+        color: #000000;
+  font-weight: 600;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+    }
+     .p222{
+        color: #3f3c3c;
+       font-weight: 300;
+       font-size: 18px;
+  font-family: 'Inter', sans-serif;
+
+    }
+     .div1111{
+
+border-radius: 50px;
+ background: #e0e0e0;
+
+  width: 90%; /* Ширина контейнера */
+  max-width: 960px; /* Максимальна ширина */
+  text-align: center;
+     }
 .container {
   display: flex;
   flex-direction: column;

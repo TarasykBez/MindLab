@@ -37,7 +37,7 @@
     <li class="tests_li">
         <a class="test_link" href="{% url 'tests:test_detail' test.id %}">
             <div class="test_name h1">{{ test.name }}</div>
-            <div class="test_description">{{ test.description }}</div>
+            <div class="test_description h1">{{ test.description }}</div>
         </a>
     </li>
 {% endfor %}
