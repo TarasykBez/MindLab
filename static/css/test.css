@@ -223,5 +223,24 @@ li {
 .tab:hover {
   background-color: rgb(201, 196, 196);
 }
+.test_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #69697a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    margin: 10px;
+}
 
+.test_name, .test_description {
+    margin: 5px 0;
+}
+
+.test_description {
+    color: #ccc; /* світло-сірий колір для опису */
+    font-size: smaller;
+}
 
