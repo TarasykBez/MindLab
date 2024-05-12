@@ -157,3 +157,24 @@ h3 {
     margin-top: 30px; /* Додаємо верхній відступ */
     margin-bottom: 20px; /* Додаємо нижній відступ */
 }
+
+.test_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Наслідує колір тексту */
+    background-color: #050505;
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 10px; /* Відступ між посиланнями */
+    box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.test_name, .test_description {
+    width: 100%; /* Заповнює всю ширину посилання */
+    text-align: center; /* Вирівнювання тексту по центру */
+    padding: 5px 0; /* Відступи зверху і знизу для тексту */
+    background-color: transparent; /* Без фону */
+    box-shadow: none; /* Без тіней */
+}

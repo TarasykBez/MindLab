@@ -34,8 +34,13 @@
         <p>Тут ви знайдете різноманітні тести, які допоможуть вам краще зрозуміти ваші емоційні стани, особистісні характеристики та інші психологічні аспекти.</p>
         <ul class="tests_ul">
             {% for test in tests %}
-                <li class="tests_li"><a class="h1" href="{% url 'tests:test_detail' test.id %}">{{ test.name }} {{ test.description}}</a></li>
-            {% endfor %}
+    <li class="tests_li">
+        <a class="test_link" href="{% url 'tests:test_detail' test.id %}">
+            <div class="test_name">{{ test.name }}</div>
+            <div class="test_description">{{ test.description }}</div>
+        </a>
+    </li>
+{% endfor %}
         </ul>
     </div>
 </div>
