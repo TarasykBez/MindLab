@@ -6,15 +6,22 @@
     <meta charset="UTF-8">
     <title>Введіть капчу</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .container form label {
+    display: none;
+}
+    </style>
 </head>
-<body>
+<body class="body_login">
    <div class="container">
-    <h2>Будь ласка, підтвердіть, що ви не робот</h2>
-    <p>Кількість спроб: {{ captcha_attempts }}</p>
+
+
     <form method="post" action="{% url 'accounts:show_captcha' %}">
         {% csrf_token %}
+        <h2 class="new_label">Будь ласка, підтвердіть, що ви не робот</h2>
+        <p class="new_label2">Кількість спроб: {{ captcha_attempts }}</p>
         {{ form.as_p }}
-        <button type="submit">Перевірити капчу</button>
+        <button type="submit" class="button_captcha">Перевірити капчу</button>
     </form>
 </div>
 

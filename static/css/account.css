@@ -210,6 +210,7 @@ transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
   grid-column: 2 / 3; /* Карта буде в другій колонці */
   grid-row: 1 / 2; /* У першому рядку */
   margin-top: 20px;
+
 }
 
 
